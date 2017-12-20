@@ -1,0 +1,1 @@
+INSERT INTO article (post_date_time, article_title, shooting_date) VALUES ('2017-12-12 22:00', 'ねこちゃん', '2017-12-12')

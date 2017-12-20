@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<script src="/webjars/jquery/3.2.1/dist/jquery.min.js"></script>
+<script src="/webjars/popper.js/1.13.0/dist/popper.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+<title>画像投稿</title>
+</head>
+<body>
+	<form action="./input/upload.html" th:action="@{/input}" method="post">
+		<div class="container">
+			<h1>画像投稿</h1>
+			<p class="lead">ねこ画像をアップロードしよう</p>
+			<div class="form-group">
+				<label>タイトル</label>
+				<input type="text" class="form-control" placeholder="投稿のタイトルを入力してください" />
+			</div>
+		</div>
+	</form>
+</body>
+</html>
