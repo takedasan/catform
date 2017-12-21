@@ -10,7 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CatImageUploadController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	String inputTsurami(Model model) {
+	String doGet(Model model) {
+
+		return "input/upload";
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	String doPost(Model model) {
 
 		return "input/upload";
 	}
