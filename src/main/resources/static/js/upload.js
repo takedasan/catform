@@ -1,16 +1,17 @@
 ELEMENT.locale(ELEMENT.lang.ja)
-var form1 = new Vue({
-	el : '#input',
-	data : {
-		date : ''
+var form = new Vue({
+	el: '#input',
+	data: {
+		title: '',
+		date: ''
 	},
-	methods : {
-		post : function() {
+	methods: {
+		post: function () {
 			$.ajax({
-				url : '/input',
-				type : 'post',
-				data : JSON.stringify(this.date),
-				contentType : 'application/json'
+				url: '/action/input',
+				type: 'post',
+				data: JSON.stringify(this.date),
+				contentType: 'application/json'
 			});
 		}
 	}

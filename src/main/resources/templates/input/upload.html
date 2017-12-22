@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8" />
-<title>画像投稿</title>
-<script th:src="@{/webjars/vue/vue.js}"></script>
-<script th:src="@{/webjars/element-ui/lib/index.js}"></script>
-<script th:src="@{/webjars/element-ui/lib/umd/locale/ja.js}"></script>
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<link rel="stylesheet" th:href="@{/webjars/element-ui/lib/theme-chalk/index.css}" />
+	<meta charset="UTF-8" />
+	<title>画像投稿</title>
+	<script th:src="@{/webjars/vue/vue.js}"></script>
+	<script th:src="@{/webjars/element-ui/lib/index.js}"></script>
+	<script th:src="@{/webjars/element-ui/lib/umd/locale/ja.js}"></script>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<link rel="stylesheet" th:href="@{/webjars/element-ui/lib/theme-chalk/index.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 </head>
+
 <body>
-	<form id="input" method="post">
-		<el-date-picker v-model="date" type="date" placeholder="日付を選択してください"> </el-date-picker>
+	<div class="container">
+		<h1>画像投稿</h1>
+		<div id="input">
+			<div class="alert alert-dark" role="alert">
+				Tういうあうあうあ
+				<a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+			</div>
+			<div class="row">
+				<div class="col-sm-2">タイトル</div>
+				<div class="col-sm-10">
+					<el-input placeholder="Please input" v-model="title"></el-input>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">撮影日付</div>
+				<div class="col-sm-10">
+					<el-date-picker v-model="date" type="date" placeholder="日付を選択してください"> </el-date-picker>
+				</div>
+			</div>
+
+		</div>
 		<button v-on:click="post">送信</button>
-	</form>
+	</div>
+
 	<script th:src="@{/js/upload.js}"></script>
 </body>
+
 </html>

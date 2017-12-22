@@ -7,18 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("input")
-public class CatImageUploadController {
+public class UploadViewController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	String doGet(Model model) {
-
 		return "input/upload";
 	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	String doPost(Model model) {
-
-		return "input/upload";
-	}
-
 }
