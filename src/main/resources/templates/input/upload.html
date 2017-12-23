@@ -8,34 +8,62 @@
 	<script th:src="@{/webjars/element-ui/lib/index.js}"></script>
 	<script th:src="@{/webjars/element-ui/lib/umd/locale/ja.js}"></script>
 	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	<link rel="stylesheet" th:href="@{/webjars/element-ui/lib/theme-chalk/index.css}" />
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 
 <body>
-	<div class="container">
-		<h1>画像投稿</h1>
-		<div id="input">
-			<div class="alert alert-dark" role="alert">
-				Tういうあうあうあ
-				<a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-			</div>
-			<div class="row">
-				<div class="col-sm-2">タイトル</div>
-				<div class="col-sm-10">
-					<el-input placeholder="Please input" v-model="title"></el-input>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-2">撮影日付</div>
-				<div class="col-sm-10">
-					<el-date-picker v-model="date" type="date" placeholder="日付を選択してください"> </el-date-picker>
-				</div>
-			</div>
+	<div id="input">
+		<el-container>
+			<el-header>
+				ねこ画像あっぷろーど
+			</el-header>
 
-		</div>
-		<button v-on:click="post">送信</button>
+			<el-container>
+				<el-aside>
+					<el-menu default-openeds="[1]">
+						<el-submenu index="1">
+							<template slot="title">
+								<i class="el-icon-location"></i>
+								<span>メニュー</span>
+							</template>
+							<el-menu-item index="1-1">
+								<i class="el-icon-picture"></i>
+								<span>トップ</span>
+							</el-menu-item>
+							<el-menu-item index="1-2">
+								<i class="el-icon-upload"></i>
+								<span>画像アップロード</span>
+							</el-menu-item>
+						</el-submenu>
+					</el-menu>
+				</el-aside>
+
+				<el-main>
+					<h3>画像投稿</h3>
+					<el-form ref="form" :model="form" label-width="150px">
+						<el-form-item label="投稿タイトル">
+							<el-input v-model="form.title" placeholder="投稿タイトルを入力してください"></el-input>
+						</el-form-item>
+						<el-form-item label="撮影日付">
+							<el-date-picker v-model="form.date" type="date" placeholder="日付を選択してください"></el-date-picker>
+						</el-form-item>
+						<el-form-item label="画像アップロード">
+							<el-upload action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList2"
+							 list-type="picture">
+								<el-button size="small" type="primary" plain="true">ファイル選択</el-button>
+							</el-upload>
+						</el-form-item>
+
+						<el-form-item>
+							<el-button type="primary" icon="el-icon-upload">アップロード</el-button>
+						</el-form-item>
+					</el-form>
+				</el-main>
+
+			</el-container>
+		</el-container>
+
 	</div>
 
 	<script th:src="@{/js/upload.js}"></script>
