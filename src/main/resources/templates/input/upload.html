@@ -16,7 +16,8 @@
 	<div id="input">
 		<el-container>
 			<el-header>
-				ねこ画像あっぷろーど
+				<img th:src="@{/image/icon.png}" width="20px" height="20px" />
+				<span>ねこ画像あっぷろーど</span>
 			</el-header>
 
 			<el-container>
@@ -41,22 +42,22 @@
 
 				<el-main>
 					<h3>画像投稿</h3>
-					<el-form ref="form" :model="form" label-width="150px">
+					<el-form ref="form" :model="formData" label-width="150px">
 						<el-form-item label="投稿タイトル">
-							<el-input v-model="form.title" placeholder="投稿タイトルを入力してください"></el-input>
+							<el-input v-model="formData.title" placeholder="投稿タイトルを入力してください"></el-input>
 						</el-form-item>
 						<el-form-item label="撮影日付">
-							<el-date-picker v-model="form.date" type="date" placeholder="日付を選択してください"></el-date-picker>
+							<el-date-picker v-model="formData.date" type="date" placeholder="日付を選択してください"></el-date-picker>
 						</el-form-item>
 						<el-form-item label="画像アップロード">
-							<el-upload action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :on-remove="handleRemove" :file-list="fileList2"
-							 list-type="picture">
+							<el-upload action="/action/input/upload" :on-success="handleSuccess" :on-preview="handlePreview" :on-remove="handleRemove"
+							 :file-list="formData.imageList" list-type="picture">
 								<el-button size="small" type="primary" plain="true">ファイル選択</el-button>
 							</el-upload>
 						</el-form-item>
 
 						<el-form-item>
-							<el-button type="primary" icon="el-icon-upload">アップロード</el-button>
+							<el-button v-on:click="post" type="primary" icon="el-icon-upload">投稿</el-button>
 						</el-form-item>
 					</el-form>
 				</el-main>

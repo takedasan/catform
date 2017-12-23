@@ -2,32 +2,30 @@ ELEMENT.locale(ELEMENT.lang.ja)
 var form = new Vue({
 	el: '#input',
 	data: {
-		form: {
+		formData: {
 			title: '',
 			date: '',
-			fileList2: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }, { name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }]
+			imageList: []
 		}
 	},
 	methods: {
 		post: function () {
 			$.ajax({
-				url: '/action/input',
+				url: '/action/input/post',
 				type: 'post',
-				data: JSON.stringify(this.date),
+				data: JSON.stringify(this.formData),
 				contentType: 'application/json'
 			});
+		},
+		handleSuccess(response, file, fileList) {
+			console.log(file);
+			this.formData.imageList.push({ name: file.name, url: file.url });
 		},
 		handleRemove(file, fileList) {
 			console.log(file, fileList);
 		},
 		handlePreview(file) {
 			console.log(file);
-		},
-		handleOpen(key, keyPath) {
-			console.log(key, keyPath);
-		},
-		handleClose(key, keyPath) {
-			console.log(key, keyPath);
 		}
 	}
 })
