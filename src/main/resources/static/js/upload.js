@@ -18,7 +18,6 @@ var form = new Vue({
 			});
 		},
 		handleSuccess(response, file, fileList) {
-			console.log(file);
 			this.formData.imageList.push({ name: file.name, url: file.url });
 		},
 		handleRemove(file, fileList) {
