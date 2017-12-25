@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>画像投稿</title>
+    <script th:src="@{/webjars/vue/vue.js}"></script>
+    <script th:src="@{/webjars/element-ui/lib/index.js}"></script>
+    <script th:src="@{/webjars/element-ui/lib/umd/locale/ja.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/element-ui/lib/theme-chalk/index.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>
+                <img th:src="@{/image/icon.png}" width="20px" height="20px" />
+                <span>ねこ画像あっぷろーど</span>
+            </el-header>
+
+            <el-container>
+                <el-aside>
+                    <el-menu default-openeds="[1]">
+                        <el-submenu index="1">
+                            <template slot="title">
+                                <i class="el-icon-location"></i>
+                                <span>メニュー</span>
+                            </template>
+                            <el-menu-item index="1-1" @click="onTopMenuCLick">
+                                <i class="el-icon-picture"></i>
+                                <span>トップ</span>
+                            </el-menu-item>
+                            <el-menu-item index="1-2">
+                                <i class="el-icon-upload"></i>
+                                <span>画像アップロード</span>
+                            </el-menu-item>
+                        </el-submenu>
+                    </el-menu>
+                </el-aside>
+
+                <el-main>
+                    <h3>最近の投稿</h3>
+                    <el-row>
+                        <el-col :span="getCardSize()" v-for="(image, index) in imageList" :key="image.id" :offset="index > 0 ? 1 : 0">
+                            <el-card :body-style="{ padding: '0px' }">
+                                <img v-bind:src="image.filePath" class="image" />
+                                <div style="padding: 14px;">
+                                    <span>{{ image.title }}</span>
+                                    <div class="bottom clearfix">
+                                        <time class="time">{{ image.date }}</time>
+                                    </div>
+                                </div>
+                            </el-card>
+                        </el-col>
+                    </el-row>
+                </el-main>
+
+            </el-container>
+        </el-container>
+
+    </div>
+
+    <script th:src="@{/js/image.js}"></script>
+</body>
+
+</html>

@@ -1,1 +1,6 @@
-INSERT INTO article (post_date_time, article_title, shooting_date) VALUES ('2017-12-12 22:00', 'ねこちゃん', '2017-12-12')
+INSERT INTO article (post_date_time, article_title, shooting_date) VALUES ('2017-12-25 21:00', 'ねこちゃん１', '2017-12-12')
+INSERT INTO article (post_date_time, article_title, shooting_date) VALUES ('2017-12-25 22:00', 'ねこちゃん２', '2017-12-12')
+INSERT INTO article (post_date_time, article_title, shooting_date) VALUES ('2017-12-25 23:00', 'ねこちゃん３', '2017-12-12')
+INSERT INTO image (image_file_name, article_id) VALUES ('z.png', '1')
+INSERT INTO image (image_file_name, article_id) VALUES ('z.png', '2')
+INSERT INTO image (image_file_name, article_id) VALUES ('z.png', '3')

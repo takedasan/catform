@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import jp.takeda.catform.domain.model.setting.ApplicationSetting;
+
 @RestController
 public class InputUploadActionController {
 
-	private final static String UPLOAD_FOLDER = "E:\\test\\";
+	@Autowired
+	ApplicationSetting setting;
 
 	@RequestMapping(path = "action/input/upload", method = RequestMethod.POST)
 	ResponseEntity<String> doUpload(@RequestParam("file") List<MultipartFile> imageList) {
@@ -43,7 +47,9 @@ public class InputUploadActionController {
 			}
 
 			byte[] bytes = file.getBytes();
-			Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
+
+			Path path = Paths
+					.get(this.setting.getStaticFolder() + this.setting.getUploadFolder() + file.getOriginalFilename());
 			Files.write(path, bytes);
 		}
 
