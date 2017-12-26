@@ -11,8 +11,7 @@ public class ImageListViewController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	String doGet(Model model) {
-		
-		
+
 		return "list/image";
 	}
 }

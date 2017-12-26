@@ -28,11 +28,11 @@
 								<i class="el-icon-location"></i>
 								<span>メニュー</span>
 							</template>
-							<el-menu-item index="1-1">
+							<el-menu-item index="1-1" @click="onTopMenuCLick">
 								<i class="el-icon-picture"></i>
 								<span>トップ</span>
 							</el-menu-item>
-							<el-menu-item index="1-2">
+							<el-menu-item index="1-2" @click="onUploadMenuCLick">
 								<i class="el-icon-upload"></i>
 								<span>画像アップロード</span>
 							</el-menu-item>
@@ -41,6 +41,8 @@
 				</el-aside>
 
 				<el-main>
+					<el-alert v-if="ok" title="投稿完了！" type="success" description="正常に投稿されました。" show-icon></el-alert>
+					<el-alert v-if="error" title="投稿失敗…" type="error" description="エラーが起きたみたいで、投稿失敗しました。" show-icon></el-alert>
 					<h3>画像投稿</h3>
 					<el-form ref="form" :model="formData" label-width="150px">
 						<el-form-item label="投稿タイトル">
