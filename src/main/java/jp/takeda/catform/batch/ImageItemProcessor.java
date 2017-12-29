@@ -18,7 +18,7 @@ public class ImageItemProcessor implements ItemProcessor<ImageModel, ImageModel>
 		model.setImageId(input.getImageId());
 		model.setArticleId(input.getArticleId());
 
-		// Build file path
+		// Build image file path
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.setting.getStaticFolder());
 		sb.append(this.setting.getUploadFolder());
