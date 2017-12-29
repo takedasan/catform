@@ -14,7 +14,10 @@ public interface ImageMapper {
 
 	@Select("SELECT image_id, image_file_name, article_id FROM image WHERE image_id = #{id}")
 	ImageModel findOne(int id);
-	
+
+	@Select("SELECT image_id, image_file_name, article_id FROM image")
+	ImageModel findAll();
+
 	@Select("SELECT image_id, image_file_name, article_id FROM image WHERE article_id = #{id}")
 	List<ImageModel> findByArticleId(int id);
 
